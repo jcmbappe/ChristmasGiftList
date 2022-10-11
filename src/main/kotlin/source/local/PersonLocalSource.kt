@@ -1,10 +1,10 @@
-package repository
+package source.local
 
-import datasource.PersonDatasource
+import datasource.PersonDataSource
 import model.Family
 import model.Person
 
-object PersonLocalRepository : PersonDatasource {
+class PersonLocalSource : PersonDataSource {
     override fun getPersonList(): List<Person> = mutableListOf<Person>().apply {
         addAll(mukendiFamilyList())
         addAll(papaFamilyList())
@@ -24,6 +24,8 @@ object PersonLocalRepository : PersonDatasource {
 
     private fun mukendiFamilyList() = listOf(
         Person(firstname = "Francis", families = listOf(Family.MUKENDI)),
+        Person(firstname = "Nancy", families = listOf(Family.MUKENDI)),
+        Person(firstname = "Mami Monique", families = listOf(Family.MUKENDI)),
         Person(firstname = "Rwann", families = listOf(Family.MUKENDI)),
         Person(firstname = "Kony", families = listOf(Family.MUKENDI)),
         Person(firstname = "Kassaï", families = listOf(Family.MUKENDI)),
@@ -84,7 +86,7 @@ object PersonLocalRepository : PersonDatasource {
 
     private fun simbaFamily() = listOf(
         Person(firstname = "Didier", families = listOf(Family.SIMBA)),
-        Person(firstname = "Lise", families = listOf(Family.SIMBA)),
+        Person(firstname = "Lisiane", families = listOf(Family.SIMBA)),
         Person(firstname = "Christopher", families = listOf(Family.SIMBA))
     )
 
