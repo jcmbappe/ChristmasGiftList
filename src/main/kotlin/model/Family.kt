@@ -1,6 +1,7 @@
 package model
 
 enum class Family {
+    SCHILTZ,
     MUKENDI,
     PAPA,
     MBAPPE,
@@ -19,5 +20,6 @@ enum class Family {
     SAPO_TCHABA_MADENSPACHER,
     ARNOUX,
     SAPO_TCHABA_ARNOUX,
-    MBIYA
+    MBIYA,
+    SENE
 }
