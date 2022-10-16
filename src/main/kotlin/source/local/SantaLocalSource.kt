@@ -39,7 +39,7 @@ class SantaLocalSource : SantaDataSource {
         }
     }
 
-    private fun getFileName(calendar: Calendar) = "$PATH${calendar.get(YEAR)}.json"
+    private fun getFileName(calendar: Calendar) = PATH + "SecretSanta${calendar.get(YEAR)}.json"
 
     companion object {
         private const val PATH: String = "src/main/resources/json/"
