@@ -23,7 +23,7 @@ class ParticipantLocalSource : ParticipantDataSource {
         superGifterParticipant(Person.MAMI_JOSEPHINE_SCHILTZ),
         superGifterParticipant(Person.FRANCIS_MUKENDI),
         superGifterParticipant(Person.ANNE_PAPA),
-        superGifterParticipant(Person.ADBOU_PAPA),
+        superGifterParticipant(Person.ABDOU_PAPA),
         superGifterParticipant(Person.ISMAEL_PAPA),
         superGifterParticipant(Person.KASSAI_MUKENDI),
         superGifterParticipant(Person.MONIQUE_MUKENDI),

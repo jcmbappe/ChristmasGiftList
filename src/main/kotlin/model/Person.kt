@@ -1,6 +1,6 @@
 package model
 
-import model.Family
+import com.squareup.moshi.JsonClass
 
 enum class Person(val families: List<Family>) {
     MAMI_JOSEPHINE_SCHILTZ(listOf(Family.SCHILTZ)),
@@ -13,16 +13,18 @@ enum class Person(val families: List<Family>) {
     KASSAI_MUKENDI(listOf(Family.MUKENDI)),
     YOWA_MUKENDI(listOf(Family.MUKENDI)),
 
-    ADBOU_PAPA(listOf(Family.PAPA)),
+    ABDOU_PAPA(listOf(Family.PAPA)),
     ANNE_PAPA(listOf(Family.PAPA)),
     KASSIM_PAPA(listOf(Family.PAPA)),
     BAHIYA_PAPA(listOf(Family.PAPA)),
     RAISSA_PAPA(listOf(Family.PAPA)),
 
     MONIQUE_MUKENDI(listOf(Family.MBAPPE)),
-    JC_MBAPPE(listOf(Family.MBAPPE)),
     WILLY_MBAPPE(listOf(Family.MBAPPE)),
     HELENE_MBAPPE(listOf(Family.MBAPPE)),
+
+    JC_MBAPPE(listOf(Family.MBAPPE, Family.MBAPPE_GARCIA)),
+    CAMILLE_GARCIA(listOf(Family.GARCIA, Family.MBAPPE_GARCIA)),
 
     ABED_KRADCHI(listOf(Family.KRADCHI)),
     JOELLE_KRADCHI(listOf(Family.KRADCHI)),

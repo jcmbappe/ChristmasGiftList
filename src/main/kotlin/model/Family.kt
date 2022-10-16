@@ -5,6 +5,8 @@ enum class Family {
     MUKENDI,
     PAPA,
     MBAPPE,
+    GARCIA,
+    MBAPPE_GARCIA,
     KRADCHI,
     KABUELA,
     SCHILTZ_KP,
