@@ -1,9 +1,22 @@
 package model
 
-import com.squareup.moshi.JsonClass
+import java.util.*
 
-@JsonClass(generateAdapter = true)
 data class SantaList(
-    val year: Int,
-    val list: List<SecretSanta>
-)
+    private val santaList: ArrayDeque<Person>,
+    private val superSantaList: ArrayDeque<Person>
+) {
+
+    fun pop(): Person {
+        val person = santaList.pop()
+        if (santaList.peek() == null) {
+            santaList.addAll(superSantaList)
+        }
+
+        return person
+    }
+
+    fun addLast(person: Person) {
+        santaList.addLast(person)
+    }
+}

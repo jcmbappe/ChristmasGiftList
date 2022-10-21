@@ -1,7 +1,5 @@
 package model
 
-import com.squareup.moshi.JsonClass
-
 enum class Person(val families: List<Family>) {
     MAMI_JOSEPHINE_SCHILTZ(listOf(Family.SCHILTZ)),
 
