@@ -3,20 +3,19 @@ package source.local
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import datasource.SantaDataSource
-import model.SantaList
+import model.ChristmasList
+import repository.ParticipantRepository
 import java.io.File
-import java.util.Calendar
-import java.util.Calendar.YEAR
 
 class SantaLocalSource : SantaDataSource {
 
-    override fun getSantaList(calendar: Calendar): SantaList? {
-        val jsonAdapter: JsonAdapter<SantaList> = Moshi.Builder()
+    override fun getChristmasList(year: Int): ChristmasList? {
+        val jsonAdapter: JsonAdapter<ChristmasList> = Moshi.Builder()
             .build()
-            .adapter(SantaList::class.java)
+            .adapter(ChristmasList::class.java)
 
         return try {
-            val content = File(getFileName(calendar)).readText()
+            val content = File(getFileName(year)).readText()
             jsonAdapter.fromJson(content)
         } catch (e: Exception) {
             println(e.message)
@@ -24,22 +23,22 @@ class SantaLocalSource : SantaDataSource {
         }
     }
 
-    override fun saveSantaList(calendar: Calendar, santaList: SantaList) {
-        val jsonAdapter: JsonAdapter<SantaList> = Moshi.Builder()
+    override fun saveChristmasList(year: Int, christmasList: ChristmasList) {
+        val jsonAdapter: JsonAdapter<ChristmasList> = Moshi.Builder()
             .build()
-            .adapter(SantaList::class.java)
+            .adapter(ChristmasList::class.java)
 
         try {
-            File(getFileName(calendar)).apply {
+            File(getFileName(year)).apply {
                 createNewFile()
-                writeText(jsonAdapter.toJson(santaList))
+                writeText(jsonAdapter.toJson(christmasList))
             }
         } catch (e: NullPointerException) {
             println(e.message)
         }
     }
 
-    private fun getFileName(calendar: Calendar) = PATH + "SecretSanta${calendar.get(YEAR)}.json"
+    private fun getFileName(year: Int) = PATH + "SecretSanta${year}.json"
 
     companion object {
         private const val PATH: String = "src/main/resources/json/"

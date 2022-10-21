@@ -3,12 +3,14 @@ package source.local
 import datasource.ParticipantDataSource
 import model.Participant
 import model.Person
+import java.time.Year
 import java.util.Calendar
 
 class ParticipantLocalSource : ParticipantDataSource {
-    override fun getParticipant(calendar: Calendar): List<Participant>? {
-        return when (calendar.get(Calendar.YEAR)) {
+    override fun getParticipant(year: Int): List<Participant>? {
+        return when (year) {
             2021 -> participantTwentyTwentyOne()
+            2022 -> participantTwentyTwentyTwo()
             else -> null
         }
     }
@@ -18,6 +20,14 @@ class ParticipantLocalSource : ParticipantDataSource {
         addAll(gifterParticipantList())
         addAll(simpleParticipantList())
     }
+    private fun participantTwentyTwentyTwo(): List<Participant> = arrayListOf<Participant>().apply {
+        addAll(superGifterList())
+        addAll(gifterParticipantList())
+        addAll(simpleParticipantList().apply {
+            remove(find { it.person == Person.GARRET_SENE })
+            add(simpleParticipant(Person.CAMILLE_GARCIA))
+        })
+    }
 
     private fun superGifterList() = arrayListOf(
         superGifterParticipant(Person.MAMI_JOSEPHINE_SCHILTZ),
@@ -25,7 +35,7 @@ class ParticipantLocalSource : ParticipantDataSource {
         superGifterParticipant(Person.ANNE_PAPA),
         superGifterParticipant(Person.ABDOU_PAPA),
         superGifterParticipant(Person.ISMAEL_PAPA),
-        superGifterParticipant(Person.KASSAI_MUKENDI),
+        superGifterParticipant(Person.KASSIM_PAPA),
         superGifterParticipant(Person.MONIQUE_MUKENDI),
         superGifterParticipant(Person.JC_MBAPPE),
         superGifterParticipant(Person.WILLY_MBAPPE),
@@ -56,8 +66,8 @@ class ParticipantLocalSource : ParticipantDataSource {
 
     private fun simpleParticipantList() = arrayListOf(
         simpleParticipant(Person.KASSAI_MUKENDI),
-        simpleParticipant(Person.JIBRIL_KRADCHI),
         simpleParticipant(Person.YOWA_MUKENDI),
+        simpleParticipant(Person.JIBRIL_KRADCHI),
         simpleParticipant(Person.YANIS_KRADCHI),
         simpleParticipant(Person.JEREMY_KABUELA),
         simpleParticipant(Person.RICHIE_KABUELA),

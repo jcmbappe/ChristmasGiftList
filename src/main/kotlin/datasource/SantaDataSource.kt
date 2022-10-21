@@ -1,9 +1,9 @@
 package datasource
 
-import model.SantaList
-import java.util.Calendar
+import model.ChristmasList
 
 interface SantaDataSource {
-    fun getSantaList(calendar: Calendar): SantaList?
-    fun saveSantaList(calendar: Calendar, santaList: SantaList)
+
+    fun getChristmasList(year: Int): ChristmasList?
+    fun saveChristmasList(year: Int, christmasList: ChristmasList)
 }
